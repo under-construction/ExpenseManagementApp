@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "api": "json-server src/api/apiDB.json --routes src/api/routes.json --no-cors=true"
   },
   "private": true,
   "dependencies": {
