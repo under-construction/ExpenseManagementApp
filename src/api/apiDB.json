@@ -1,14 +1,6 @@
 {
-  "oneTimeIncome": [
-    {}
-  ],
-  "oneTimeExpense": [
-    {}
-  ],
-  "regularIncome": [
-    {}
-  ],
-  "regularExpense": [
-    {}
-  ]
+  "oneTimeIncome": [],
+  "oneTimeExpense": [],
+  "regularIncome": [],
+  "regularExpense": []
 }
