@@ -6,11 +6,13 @@ import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxNumberBoxMo
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
+import { OneTimeIncomeComponent } from './Components/one-time-income/one-time-income.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    OneTimeIncomeComponent
   ],
   imports: [
     BrowserModule,
