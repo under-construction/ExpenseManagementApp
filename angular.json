@@ -109,5 +109,15 @@
       }
     }
   },
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "skipTests": true
+      },
+      "service": {
+        "skipTests": true
+      }
+    }
+  },
   "defaultProject": "ExpenseManagementApp"
 }
