@@ -10,6 +10,7 @@ import { OneTimeIncomeComponent } from './Components/one-time-income/one-time-in
 import { RegularIncomeComponent } from './Components/regular-income/regular-income.component';
 import { HeaderComponent } from './Components/layout/header/header.component';
 import { OneTimeExpenseComponent } from './Components/one-time-expense/one-time-expense.component';
+import { RegularExpenseComponent } from './Components/regular-expense/regular-expense.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OneTimeExpenseComponent } from './Components/one-time-expense/one-time-
     OneTimeIncomeComponent,
     RegularIncomeComponent,
     HeaderComponent,
-    OneTimeExpenseComponent
+    OneTimeExpenseComponent,
+    RegularExpenseComponent
   ],
   imports: [
     BrowserModule,
