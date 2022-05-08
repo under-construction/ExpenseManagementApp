@@ -15,12 +15,13 @@ export class HomeComponent implements OnInit {
   }
 
   dropdownItemClick(e: any) {
+    debugger;
     switch (this.addOptions.indexOf(e.itemData)) {
       case 0:
-        window.location.replace('../oneTimeIncome');
+        window.location.replace(`${'../oneTime'}${e.element.textContent}`);
         break;
       case 1:
-        window.location.replace('../regularIncome');
+        window.location.replace(`${'../regular'}${e.element.textContent}`);
         break;
       default:
         break;
