@@ -17,10 +17,7 @@ export class HomeComponent implements OnInit {
   dropdownItemClick(e: any) {
     switch (this.addOptions.indexOf(e.itemData)) {
       case 0:
-        window.location.replace('../oneTime');
-        break;
-      case 1:
-        window.location.replace('../regular');
+        window.location.replace('../oneTimeIncome');
         break;
       default:
         break;
