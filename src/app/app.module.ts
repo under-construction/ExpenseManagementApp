@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { OneTimeIncomeComponent } from './Components/one-time-income/one-time-income.component';
 import { RegularIncomeComponent } from './Components/regular-income/regular-income.component';
+import { HeaderComponent } from './Components/layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RegularIncomeComponent } from './Components/regular-income/regular-inco
     HomeComponent,
     OneTimeIncomeComponent,
     RegularIncomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
