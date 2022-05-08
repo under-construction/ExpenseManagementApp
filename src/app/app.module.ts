@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { OneTimeIncomeComponent } from './Components/one-time-income/one-time-income.component';
+import { RegularIncomeComponent } from './Components/regular-income/regular-income.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    OneTimeIncomeComponent
+    OneTimeIncomeComponent,
+    RegularIncomeComponent,
   ],
   imports: [
     BrowserModule,
