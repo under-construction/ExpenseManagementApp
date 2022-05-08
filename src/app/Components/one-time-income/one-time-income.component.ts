@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OneTimeIncome } from 'src/app/Models/models';
 import { OneTimeIncomeService } from 'src/app/Services/one-time-income.service';
-import { BaseComponent } from '../home/BaseComponent/base/base.component';
+import { BaseComponent } from '../base/base.component';
 
 @Component({
   selector: 'app-one-time',
