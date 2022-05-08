@@ -10,7 +10,8 @@ import { BaseComponent } from '../base/base.component';
 })
 export class RegularIncomeComponent extends BaseComponent<RegularIncome> {
 
-  frequencyOpt: string[] = ['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']
+  frequencyOpt: string[] = ['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly'];
+  maxId!: number;
 
   constructor(
     private regularIncomeService: RegularIncomeService
@@ -23,8 +24,9 @@ export class RegularIncomeComponent extends BaseComponent<RegularIncome> {
   }
 
   addClick() {
+    this.getMaxId();
     this.Insert({ 
-      id: this.modelList.length + 1, 
+      id: this.maxId + 1, 
       description: this.formModel.description,
       amount: this.formModel.amount,
       frequency: this.formModel.frequency });
@@ -52,8 +54,10 @@ export class RegularIncomeComponent extends BaseComponent<RegularIncome> {
   }
 
   rowInserted(e: any) {
+    this.getMaxId();
+    
     this.Insert({ 
-      id: this.modelList.length + 1,
+      id: this.maxId + 1,
       description: e.data.description,
       amount: e.data.amount,
       frequency: e.data.frequency });
@@ -67,5 +71,9 @@ export class RegularIncomeComponent extends BaseComponent<RegularIncome> {
     this.formModel.description = '';
     this.formModel.amount = 0;
     this.formModel.frequency = '';
+  }
+
+  private getMaxId() {
+    this.maxId = Math.max(...this.modelList.map(i => i.id));
   }
 }

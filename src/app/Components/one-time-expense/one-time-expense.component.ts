@@ -13,6 +13,7 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
   name!: string;
   amount!: number;
   gridDataSource!: OneTimeExpense[];
+  maxId!: number;
 
   constructor(
     private oneTimeExpenseService: OneTimeExpenseService
@@ -25,8 +26,9 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
   }
 
   addClick() {
+    this.getMaxId();
     this.Insert({ 
-      id: this.modelList.length + 1, 
+      id: this.maxId + 1, 
       description: this.formModel.description,
       amount: this.formModel.amount });
   }
@@ -52,8 +54,10 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
   }
 
   rowInserted(e: any) {
+    this.getMaxId();
+
     this.Insert({ 
-      id: this.modelList.length + 1,
+      id: this.maxId + 1,
       description: e.data.description,
       amount: e.data.amount });
   }
@@ -65,5 +69,9 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
   private reset() {
     this.formModel.description = '';
     this.formModel.amount = 0;
+  }
+
+  private getMaxId() {
+    this.maxId = Math.max(...this.modelList.map(i => i.id));
   }
 }
