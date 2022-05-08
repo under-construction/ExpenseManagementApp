@@ -1,0 +1,69 @@
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <form class="w-25 p-3">
+        <div class="mb-3 row">
+            <label class="col-4 col-form-label">Income:</label>
+            <div class="col-8">
+                <dx-text-box [(value)]="formModel.description"></dx-text-box>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-4 col-form-label">Price:</label>
+            <div class="col-8">
+                <dx-number-box [(value)]="formModel.amount"></dx-number-box>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-4 col-form-label">Frequency:</label>
+            <div class="col-8">
+                <dx-select-box [items]="frequencyOpt" [showClearButton]="true" 
+                [(value)]="formModel.frequency"></dx-select-box>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <dx-button text="Apply" class="btn btn-success m-2" (onClick)="addClick()"></dx-button>
+                </div>
+                <div class="col">
+                    <dx-button text="Reset" class="btn btn-danger m-2" (onClick)="resetClick()"></dx-button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="container w-25">
+        <dx-data-grid 
+        [dataSource]="modelList"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        [dataSource]="modelList"
+        (onRowUpdated)="rowUpdated($event)"
+        (onRowRemoved)="rowRemoved($event)"
+        (onRowInserted)="rowInserted($event)"
+        (onSelectionChanged)="selectionChanged($event)">
+            <dxi-column dataField="description" dataType="string"></dxi-column>
+            <dxi-column dataField="amount" dataType="number"></dxi-column>
+            <dxi-column dataField="frequency" dataType="string">
+                <dxo-lookup [dataSource]="frequencyOpt">
+                </dxo-lookup>
+            </dxi-column>
+
+            <dxo-summary>
+                <dxi-total-item column="amount" summaryType="sum">
+                </dxi-total-item>
+            </dxo-summary>
+
+            <dxo-editing
+                mode="row"
+                [allowUpdating]="true"
+                [allowDeleting]="true"
+                [allowAdding]="true">
+            </dxo-editing>
+
+            <dxo-selection mode="single"></dxo-selection>
+        </dx-data-grid>
+    </div>
+</div>

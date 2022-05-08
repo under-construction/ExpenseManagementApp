@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
       case 0:
         window.location.replace('../oneTimeIncome');
         break;
+      case 1:
+        window.location.replace('../regularIncome');
+        break;
       default:
         break;
     }
