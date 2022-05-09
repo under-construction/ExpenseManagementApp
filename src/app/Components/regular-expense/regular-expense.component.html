@@ -18,7 +18,8 @@
             <label class="col-4 col-form-label">Frequency:</label>
             <div class="col-8">
                 <dx-select-box [items]="frequencyOpt" [showClearButton]="true" 
-                [(value)]="formModel.frequency"></dx-select-box>
+                displayExpr="description" valueExpr="id"
+                [(value)]="formModel.frequencyId"></dx-select-box>
             </div>
         </div>
 
@@ -46,8 +47,8 @@
         (onSelectionChanged)="selectionChanged($event)">
             <dxi-column dataField="description" dataType="string"></dxi-column>
             <dxi-column dataField="amount" dataType="number"></dxi-column>
-            <dxi-column dataField="frequency" dataType="string">
-                <dxo-lookup [dataSource]="frequencyOpt">
+            <dxi-column dataField="frequencyId" dataType="string">
+                <dxo-lookup [dataSource]="frequencyOpt" displayExpr="description" valueExpr="id">
                 </dxo-lookup>
             </dxi-column>
 

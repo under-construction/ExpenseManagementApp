@@ -7,7 +7,7 @@ export class Entity {
 }
 
 export class FrequentEntity extends Entity {
-    frequency!: string;
+    frequencyId!: number;
 
     constructor() { super(); }
 }
