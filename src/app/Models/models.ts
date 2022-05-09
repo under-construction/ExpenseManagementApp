@@ -31,3 +31,10 @@ export class RegularExpense extends FrequentEntity {
 
     constructor() { super(); }
 }
+
+export class Frequency {
+    id!: number;
+    description!: string;
+
+    constructor() {}
+}
