@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit {
     this.oneTimeIncomeService.GetAll()
     .subscribe(
       res => {
+        this.incomeList = res;
         this.totalOneTimeIncome = res.reduce((sum, i) => sum + i.amount, 0);
       },
       err => {

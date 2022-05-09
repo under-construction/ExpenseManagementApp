@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxNumberBoxModule, DxPopupModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxDropDownButtonModule, DxNumberBoxModule, DxPieChartModule, DxPopupModule, DxSelectBoxModule, DxTextBoxModule } from 'devextreme-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,7 +36,7 @@ import { FrequencyComponent } from './Components/frequency/frequency.component';
     DxDropDownButtonModule,
     DxSelectBoxModule,
     DxDataGridModule,
-    DxPopupModule
+    DxPieChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
