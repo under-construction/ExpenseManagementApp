@@ -23,17 +23,6 @@ export class FrequencyComponent extends BaseComponent<Frequency> {
     this.GetAll();
   }
 
-  addClick() {
-    this.getMaxId();
-    this.Insert({ 
-      id: this.maxId + 1,
-      description: this.formModel.description });
-  }
-
-  resetClick() {
-    this.reset();
-  }
-
   rowUpdated(e: any) {
     let data = e.data;
 
@@ -59,10 +48,6 @@ export class FrequencyComponent extends BaseComponent<Frequency> {
 
   selectionChanged(e: any) {
     this.GetById(e.selectedRowsData[0].id);
-  }
-
-  private reset() {
-    this.formModel.description = '';
   }
 
   private getMaxId() {
