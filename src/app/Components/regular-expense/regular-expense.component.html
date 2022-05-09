@@ -35,6 +35,13 @@
                     </div>
                 </div>
 
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Number of Repetition:</label>
+                    <div class="col-8">
+                        <dx-number-box [(value)]="formModel.repetitionNumber"></dx-number-box>
+                    </div>
+                </div>
+
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -54,7 +61,6 @@
                 [dataSource]="modelList"
                 [allowColumnResizing]="true"
                 [columnAutoWidth]="true"
-                [dataSource]="modelList"
                 (onRowUpdated)="rowUpdated($event)"
                 (onRowRemoved)="rowRemoved($event)"
                 (onRowInserted)="rowInserted($event)"
@@ -65,6 +71,8 @@
                         <dxo-lookup [dataSource]="frequencyOpt" displayExpr="description" valueExpr="id">
                         </dxo-lookup>
                     </dxi-column>
+                    <dxi-column dataField="startDate" dataType="date"></dxi-column>
+                    <dxi-column dataField="repetitionNumber" dataType="number"></dxi-column>
 
                     <dxo-summary>
                         <dxi-total-item column="amount" summaryType="sum">
