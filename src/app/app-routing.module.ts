@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'regularIncome', component: RegularIncomeComponent },
   { path: 'oneTimeExpense', component: OneTimeExpenseComponent },
   { path: 'regularExpense', component: RegularExpenseComponent },
-  { path: 'frequency', component: FrequencyComponent }
+  { path: 'frequency', component: FrequencyComponent },
+  { path: '',  redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
