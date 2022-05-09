@@ -1,5 +1,5 @@
 <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-    <form class="w-25 p-3">
+    <form class="w-25 p-3 border">
         <div class="mb-3 row">
             <label class="col-4 col-form-label">Total One Time Income:</label>
             <div class="col-8">
@@ -14,12 +14,12 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="mb-3 float-end">
             <div class="row">
-                <div class="col-5">
+                <div class="col-6">
                     <dx-drop-down-button text="Income" [items]="addOptions" icon="add" (onItemClick)="dropdownItemClick($event)"></dx-drop-down-button>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <dx-drop-down-button text="Expense" [items]="addOptions" icon="minus" (onItemClick)="dropdownItemClick($event)"></dx-drop-down-button>
                 </div>
             </div>
