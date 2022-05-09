@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegularExpense } from 'src/app/Models/models';
+import { Frequency, RegularExpense } from 'src/app/Models/models';
+import { FrequencyService } from 'src/app/Services/frequency.service';
 import { RegularExpenseService } from 'src/app/Services/regular-expense.service';
 import { BaseComponent } from '../base/base.component';
 
@@ -10,17 +11,19 @@ import { BaseComponent } from '../base/base.component';
 })
 export class RegularExpenseComponent extends BaseComponent<RegularExpense> {
 
-  frequencyOpt: string[] = ['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']
+  frequencyOpt!: Frequency[];
   maxId!: number;
 
   constructor(
-    private regularExpenseService: RegularExpenseService
+    private regularExpenseService: RegularExpenseService,
+    private frequencyService: FrequencyService
     ) { 
       super(regularExpenseService) 
     }
 
   ngOnInit(): void {
     this.GetAll();
+    this.getFrequencyDataSource();
   }
 
   addClick() {
@@ -29,7 +32,7 @@ export class RegularExpenseComponent extends BaseComponent<RegularExpense> {
       id: this.maxId + 1, 
       description: this.formModel.description,
       amount: this.formModel.amount,
-      frequency: this.formModel.frequency });
+      frequencyId: this.formModel.frequencyId });
   }
 
   resetClick() {
@@ -43,7 +46,7 @@ export class RegularExpenseComponent extends BaseComponent<RegularExpense> {
       id: data.id,
       description: data.description,
       amount: data.amount,
-      frequency: data.frequency
+      frequencyId: data.frequencyId
     };
 
     this.Update(model.id, model);
@@ -60,7 +63,7 @@ export class RegularExpenseComponent extends BaseComponent<RegularExpense> {
       id: this.maxId + 1,
       description: e.data.description,
       amount: e.data.amount,
-      frequency: e.data.frequency });
+      frequencyId: e.data.frequencyId });
   }
 
   selectionChanged(e: any) {
@@ -70,10 +73,18 @@ export class RegularExpenseComponent extends BaseComponent<RegularExpense> {
   private reset() {
     this.formModel.description = '';
     this.formModel.amount = 0;
-    this.formModel.frequency = '';
+    this.formModel.frequencyId = 0;
   }
 
   private getMaxId() {
     this.maxId = Math.max(...this.modelList.map(i => i.id));
+  }
+  
+  private getFrequencyDataSource() {
+    this.frequencyService.GetAll()
+    .subscribe(
+      res => this.frequencyOpt = res,
+      err => console.log(err.message)
+    )
   }
 }
