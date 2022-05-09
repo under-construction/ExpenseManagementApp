@@ -28,7 +28,8 @@ export class FrequencyComponent extends BaseComponent<Frequency> {
 
     let model: Frequency = {
       id: data.id,
-      description: data.description
+      description: data.description,
+      daysCount: data.daysCount
     };
 
     this.Update(model.id, model);
@@ -43,7 +44,8 @@ export class FrequencyComponent extends BaseComponent<Frequency> {
 
     this.Insert({ 
       id: this.maxId + 1,
-      description: e.data.description });
+      description: e.data.description,
+      daysCount: e.data.daysCount });
   }
 
   selectionChanged(e: any) {

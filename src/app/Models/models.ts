@@ -38,6 +38,7 @@ export class RegularExpense extends FrequentEntity {
 export class Frequency {
     id!: number;
     description!: string;
+    daysCount!: number;
 
     constructor() {}
 }
