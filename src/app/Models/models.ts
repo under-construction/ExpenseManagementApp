@@ -8,16 +8,19 @@ export class Entity {
 
 export class FrequentEntity extends Entity {
     frequencyId!: number;
+    startDate!: string | number | Date;
 
     constructor() { super(); }
 }
 
 export class OneTimeIncome extends Entity {
+    date!: Date;
 
     constructor() { super(); }
 }
 
 export class OneTimeExpense extends Entity {
+    date!: Date;
 
     constructor() { super(); }
 }

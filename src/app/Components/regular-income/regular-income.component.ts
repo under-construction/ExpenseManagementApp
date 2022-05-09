@@ -32,7 +32,8 @@ export class RegularIncomeComponent extends BaseComponent<RegularIncome> {
       id: this.maxId + 1, 
       description: this.formModel.description,
       amount: this.formModel.amount,
-      frequencyId: this.formModel.frequencyId });
+      frequencyId: this.formModel.frequencyId,
+      startDate: this.formModel.startDate });
   }
 
   resetClick() {
@@ -46,7 +47,8 @@ export class RegularIncomeComponent extends BaseComponent<RegularIncome> {
       id: data.id,
       description: data.description,
       amount: data.amount,
-      frequencyId: data.frequencyId
+      frequencyId: data.frequencyId,
+      startDate: this.formModel.startDate
     };
 
     this.Update(model.id, model);
@@ -63,7 +65,8 @@ export class RegularIncomeComponent extends BaseComponent<RegularIncome> {
       id: this.maxId + 1,
       description: e.data.description,
       amount: e.data.amount,
-      frequencyId: e.data.frequencyId });
+      frequencyId: e.data.frequencyId,
+      startDate: this.formModel.startDate });
   }
 
   selectionChanged(e: any) {

@@ -10,8 +10,6 @@ import { BaseComponent } from '../base/base.component';
 })
 export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
 
-  name!: string;
-  amount!: number;
   gridDataSource!: OneTimeExpense[];
   maxId!: number;
 
@@ -30,7 +28,8 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
     this.Insert({ 
       id: this.maxId + 1, 
       description: this.formModel.description,
-      amount: this.formModel.amount });
+      amount: this.formModel.amount,
+      date: new Date() });
   }
 
   resetClick() {
@@ -43,7 +42,8 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
     let model: OneTimeExpense = {
       id: data.id,
       description: data.description,
-      amount: data.amount
+      amount: data.amount,
+      date: new Date()
     };
 
     this.Update(model.id, model);
@@ -59,7 +59,8 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
     this.Insert({ 
       id: this.maxId + 1,
       description: e.data.description,
-      amount: e.data.amount });
+      amount: e.data.amount,
+      date: new Date() });
   }
 
   selectionChanged(e: any) {

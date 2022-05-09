@@ -27,6 +27,14 @@
                     </div>
                 </div>
 
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Start Date:</label>
+                    <div class="col-8">
+                        <dx-date-box [showClearButton]="true" dateSerializationFormat="yyyy-MM-dd" type="date"
+                        [(value)]="formModel.startDate"></dx-date-box>
+                    </div>
+                </div>
+
                 <div class="container">
                     <div class="row">
                         <div class="col">
