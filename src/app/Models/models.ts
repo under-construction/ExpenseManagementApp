@@ -9,6 +9,7 @@ export class Entity {
 export class FrequentEntity extends Entity {
     frequencyId!: number;
     startDate!: string | number | Date;
+    repetitionNumber!: number;
 
     constructor() { super(); }
 }
