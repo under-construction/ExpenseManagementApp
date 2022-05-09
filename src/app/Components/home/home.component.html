@@ -1,28 +1,48 @@
 <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-    <form class="w-25 p-3 border">
-        <div class="mb-3 row">
-            <label class="col-4 col-form-label">Total One Time Income:</label>
-            <div class="col-8">
-                <dx-number-box [(value)]="totalOneTimeIncome" [readOnly]="true"></dx-number-box>
-            </div>
+
+    <div class="row justify-content-between w-75">
+        <div class="col-4 border m-3">
+            <form class="p-3">
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Total Income:</label>
+                    <div class="col-8">
+                        <dx-number-box [(value)]="totalOneTimeIncome" [readOnly]="true"></dx-number-box>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Total Expense:</label>
+                    <div class="col-8">
+                        <dx-number-box [(value)]="totalOneTimeExpense" [readOnly]="true"></dx-number-box>
+                    </div>
+                </div>
+
+                <div class="mb-3 float-end">
+                    <div class="row">
+                        <div class="col-6">
+                            <dx-drop-down-button text="Income" [items]="addOptions" icon="add" (onItemClick)="dropdownItemClick($event)"></dx-drop-down-button>
+                        </div>
+                        <div class="col-6">
+                            <dx-drop-down-button text="Expense" [items]="addOptions" icon="minus" (onItemClick)="dropdownItemClick($event)"></dx-drop-down-button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <div class="mb-3 row">
-            <label class="col-4 col-form-label">Total One Time Expense:</label>
-            <div class="col-8">
-                <dx-number-box [(value)]="totalOneTimeExpense" [readOnly]="true"></dx-number-box>
-            </div>
-        </div>
-
-        <div class="mb-3 float-end">
-            <div class="row">
-                <div class="col-6">
-                    <dx-drop-down-button text="Income" [items]="addOptions" icon="add" (onItemClick)="dropdownItemClick($event)"></dx-drop-down-button>
-                </div>
-                <div class="col-6">
-                    <dx-drop-down-button text="Expense" [items]="addOptions" icon="minus" (onItemClick)="dropdownItemClick($event)"></dx-drop-down-button>
+        <div class="col-6 border m-3">
+            <div class="mb-3 row">
+                <div class="col-8">
+                    <dx-pie-chart type="doughnut" [dataSource]="incomeList"
+                    palette="Soft Pastel" title="Budget">
+                        <dxi-series argumentField="description" valueField="amount">
+                            <dxo-label [visible]="true" format="currency">
+                            </dxo-label>
+                        </dxi-series>
+                        <dxo-size [width]="500"></dxo-size>
+                    </dx-pie-chart>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </div>
