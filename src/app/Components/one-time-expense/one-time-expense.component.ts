@@ -29,7 +29,7 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
       id: this.maxId + 1, 
       description: this.formModel.description,
       amount: this.formModel.amount,
-      date: new Date() });
+      date: this.formModel.date });
   }
 
   resetClick() {
@@ -43,7 +43,7 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
       id: data.id,
       description: data.description,
       amount: data.amount,
-      date: new Date()
+      date: data.date
     };
 
     this.Update(model.id, model);
@@ -60,7 +60,7 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
       id: this.maxId + 1,
       description: e.data.description,
       amount: e.data.amount,
-      date: new Date() });
+      date: e.data.date });
   }
 
   selectionChanged(e: any) {
@@ -70,6 +70,7 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
   private reset() {
     this.formModel.description = '';
     this.formModel.amount = 0;
+    this.formModel.date = 0;
   }
 
   private getMaxId() {
