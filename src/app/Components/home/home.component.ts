@@ -14,14 +14,16 @@ export class HomeComponent implements OnInit {
 
   addOptions: string[] = ['One Time', 'Regular'];
   incomeList!: OneTimeIncome[];
-  totalOneTimeIncome!: number;
-  totalRegularIncome!: number;
-  totalOneTimeExpense!: number;
-  totalRegularExpense!: number;
+  countOneTimeInc!: number;
+  countOneTimeExp!: number;
+  countRegularInc!: number;
+  countRegularExp!: number;
 
   constructor(
     private oneTimeIncomeService: OneTimeIncomeService,
-    private oneTimeExpenseService: OneTimeExpenseService
+    private oneTimeExpenseService: OneTimeExpenseService,
+    private regularIncomeService: RegularIncomeService,
+    private regularExpenseService: RegularExpenseService
     ) {
 
      }
@@ -29,6 +31,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getTotalOneTimeIncome();
     this.getTotalOneTimeExpense();
+    this.getTotalRegularIncomes();
+    this.getTotalRegularExpenses();
   }
 
   dropdownItemClick(e: any) {
@@ -44,16 +48,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  resetClick() {
-    
-  }
-
   getTotalOneTimeIncome() {
     this.oneTimeIncomeService.GetAll()
     .subscribe(
       res => {
-        this.incomeList = res;
-        this.totalOneTimeIncome = res.reduce((sum, i) => sum + i.amount, 0);
+        this.countOneTimeInc = res.length;
       },
       err => {
         console.log(err.message);
@@ -65,7 +64,31 @@ export class HomeComponent implements OnInit {
     this.oneTimeExpenseService.GetAll()
     .subscribe(
       res => {
-        this.totalOneTimeExpense = res.reduce((sum, i) => sum + i.amount, 0);
+        this.countOneTimeExp = res.length;
+      },
+      err => {
+        console.log(err.message);
+      }
+    );
+  }
+
+  getTotalRegularIncomes() {
+    this.regularIncomeService.GetAll()
+    .subscribe(
+      res => {
+        this.countRegularInc = res.length;
+      },
+      err => {
+        console.log(err.message);
+      }
+    );
+  }
+
+  getTotalRegularExpenses() {
+    this.regularExpenseService.GetAll()
+    .subscribe(
+      res => {
+        this.countRegularExp = res.length;
       },
       err => {
         console.log(err.message);
