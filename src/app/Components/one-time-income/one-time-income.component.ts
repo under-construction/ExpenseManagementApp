@@ -9,6 +9,8 @@ import { BaseComponent } from '../base/base.component';
   styleUrls: ['./one-time-income.component.css']
 })
 export class OneTimeIncomeComponent extends BaseComponent<OneTimeIncome> {
+  // class that represents one time income screen.
+  // allows user to list and edit one time incomes on a form or a datagrid.
 
   gridDataSource!: OneTimeIncome[];
   maxId!: number;

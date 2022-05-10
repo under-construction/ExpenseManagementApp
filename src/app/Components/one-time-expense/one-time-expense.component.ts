@@ -9,6 +9,8 @@ import { BaseComponent } from '../base/base.component';
   styleUrls: ['./one-time-expense.component.css']
 })
 export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
+  // class that represents one time expense screen.
+  // allows user to list and edit one time expenses on a form or a datagrid.
 
   gridDataSource!: OneTimeExpense[];
   maxId!: number;
@@ -23,6 +25,8 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
     this.GetAll();
   }
 
+  // method to be initialized when the add button is clicked.
+  // inserts new entity to the mock database.
   addClick() {
     this.getMaxId();
     this.Insert({ 
@@ -32,10 +36,15 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
       date: this.formModel.date });
   }
 
+  // method to be initialized when the reset button is clicked.
+  // resets the form.
   resetClick() {
     this.reset();
   }
 
+  // method to be initialized when a row is updated inside datagrid.
+  // triggered by datagrid event.
+  // allows inline editing.
   rowUpdated(e: any) {
     let data = e.data;
 
@@ -49,10 +58,16 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
     this.Update(model.id, model);
   }
 
+  // method to be initialized when a row is updated inside datagrid.
+  // triggered by datagrid event.
+  // allows inline editing.
   rowRemoved(e: any) {
     this.Delete(e.data.id);
   }
 
+  // method to be initialized when a row is deleted inside datagrid.
+  // triggered by datagrid event.
+  // allows inline editing.
   rowInserted(e: any) {
     this.getMaxId();
 
@@ -63,6 +78,9 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
       date: e.data.date });
   }
 
+  // method to be initialized when a row is selected inside datagrid.
+  // triggered by datagrid event.
+  // allows inline editing.
   selectionChanged(e: any) {
     this.GetById(e.selectedRowsData[0].id);
   }
@@ -73,6 +91,7 @@ export class OneTimeExpenseComponent extends BaseComponent<OneTimeExpense> {
     this.formModel.date = 0;
   }
 
+  // allows auto increment of id columns for entities.
   private getMaxId() {
     this.maxId = Math.max(...this.modelList.map(i => i.id));
   }

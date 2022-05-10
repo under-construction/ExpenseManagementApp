@@ -14,6 +14,11 @@ import * as moment from 'moment';
   styleUrls: ['./forecast.component.css']
 })
 export class ForecastComponent implements OnInit {
+
+  // class that represents forecast screen.
+  // allows user to see actual financial income and expense amounts at specific date.
+  // reflects data in a pie chart with amounts.
+
   selectedDate: string | number | Date = new Date();
   totalOneTimeIncome!: number;
   totalOneTimeExpense!: number;
@@ -85,6 +90,7 @@ export class ForecastComponent implements OnInit {
     );
   }
 
+  // method for reflecting data to form
   showAmounts() {
     this.calculateOneTimeIncomes(this.selectedDate);
     this.calculateOneTimeExpenses(this.selectedDate);
@@ -94,11 +100,13 @@ export class ForecastComponent implements OnInit {
     this.calculateOverall();
   }
 
+  // calculation method for overall budget (total income - total expense)
   calculateOverall() {
     this.overallBudget = this.totalOneTimeIncome + this.totalRegularIncome 
     - (this.totalOneTimeExpense + this.totalRegularExpense);
   }
 
+  // method for creating an array to be used as pie chart data source
   private getChartDataSource() {
     this.chartDataSource = [
       {
@@ -120,6 +128,8 @@ export class ForecastComponent implements OnInit {
     ];
   }
 
+  // this method basically adds regular income amounts to overall budget.
+  // for each regular income, transaction dates are calculated and pushed into an array by using their frequency and number of repetition. then each transaction date is checked whether it is between today and selected date. if so, transaction amount is added to total regular income price. at last, total regular income price is assigned to the number box and shown on the screen.
   private forecastRegularIncomes(date: string | number | Date) {
     let regularIncome = 0;
 
@@ -136,6 +146,7 @@ export class ForecastComponent implements OnInit {
       this.totalRegularIncome = regularIncome;
   }
 
+  // same process with the preceding method but for regular expense amounts.
   private forecastRegularExpenses(date: string | number | Date) {
     let regularExpense = 0;
 
@@ -152,6 +163,8 @@ export class ForecastComponent implements OnInit {
       this.totalRegularExpense = regularExpense;
   }
 
+  // this method calculates total one time income price.
+  // for each one time income, it is checked if their transaction date is before selected date. if so, entity amount is added to total one time income price. finally, total one time income price is assigned to the number box and shown on the screen.
   private calculateOneTimeIncomes(date: string | number | Date) {
     let totalOneTimeIncome = this.oneTimeIncomeList.reduce((sum, i) =>
     new Date(i.date) <= new Date(date) ? (sum + i.amount) : sum, 0);
@@ -159,6 +172,7 @@ export class ForecastComponent implements OnInit {
     this.totalOneTimeIncome = totalOneTimeIncome;
   }
 
+    // same process with the preceding method but for one time expense amounts.
   private calculateOneTimeExpenses(date: string | number | Date) {
     let totalOneTimeExpense = this.oneTimeExpenseList.reduce((sum, i) => 
     new Date(i.date) <= new Date(date) ? (sum + i.amount) : sum, 0);
@@ -166,6 +180,8 @@ export class ForecastComponent implements OnInit {
     this.totalOneTimeExpense = totalOneTimeExpense;
   }
 
+  // method for getting array consisting of successive dates due to the given number of days and repetition.
+  // adds given number of days to the given date for repetition times and returns found dates as an array.
   private addDays(date: Date, days: number, repetition: number): Date[] {
     let dates: Date[] = [new Date(date)];
     for (let i = 0; i < repetition; i++) {
@@ -176,6 +192,7 @@ export class ForecastComponent implements OnInit {
     return dates;
   }
 
+  // method for getting if a date is between two dates.
   private isBetween(date: Date, startDate: Date, endDate: Date): boolean {
     return moment(date).isBetween(startDate, endDate, null, '[]');
   }

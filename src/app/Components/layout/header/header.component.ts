@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  // class that represents header bar.
+  // allows user to navigate any page.
 
   constructor() { }
 
