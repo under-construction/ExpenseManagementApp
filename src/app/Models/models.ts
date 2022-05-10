@@ -15,13 +15,13 @@ export class FrequentEntity extends Entity {
 }
 
 export class OneTimeIncome extends Entity {
-    date!: Date;
+    date!: string | number | Date;
 
     constructor() { super(); }
 }
 
 export class OneTimeExpense extends Entity {
-    date!: Date;
+    date!: string | number | Date;
 
     constructor() { super(); }
 }

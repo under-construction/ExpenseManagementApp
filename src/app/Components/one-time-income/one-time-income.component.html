@@ -18,6 +18,14 @@
                     </div>
                 </div>
 
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Date:</label>
+                    <div class="col-8">
+                        <dx-date-box [showClearButton]="true" dateSerializationFormat="yyyy-MM-dd" type="date"
+                        [(value)]="formModel.date"></dx-date-box>
+                    </div>
+                </div>
+
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -44,6 +52,7 @@
                 (onSelectionChanged)="selectionChanged($event)">
                     <dxi-column dataField="description" dataType="string"></dxi-column>
                     <dxi-column dataField="amount" dataType="number"></dxi-column>
+                    <dxi-column dataField="date" dataType="date"></dxi-column>
 
                     <dxo-summary>
                         <dxi-total-item column="amount" summaryType="sum">
