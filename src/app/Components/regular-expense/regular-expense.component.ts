@@ -10,6 +10,8 @@ import { BaseComponent } from '../base/base.component';
   styleUrls: ['./regular-expense.component.css']
 })
 export class RegularExpenseComponent extends BaseComponent<RegularExpense> {
+  // class that represents regular expense screen.
+  // allows user to list and edit regular expenses on a form or a datagrid.
 
   frequencyOpt!: Frequency[];
   maxId!: number;
@@ -87,6 +89,7 @@ export class RegularExpenseComponent extends BaseComponent<RegularExpense> {
     this.maxId = Math.max(...this.modelList.map(i => i.id));
   }
   
+  // method to get frequency data from server
   private getFrequencyDataSource() {
     this.frequencyService.GetAll()
     .subscribe(

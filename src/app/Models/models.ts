@@ -1,3 +1,5 @@
+// classes for entity models
+
 export class Entity {
     id!: number;
     description!: string;

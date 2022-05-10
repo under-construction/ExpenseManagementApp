@@ -12,8 +12,9 @@ import { RegularIncomeService } from 'src/app/Services/regular-income.service';
 })
 export class HomeComponent implements OnInit {
 
-  addOptions: string[] = ['One Time', 'Regular'];
-  incomeList!: OneTimeIncome[];
+  // class that represents home screen
+  // allows navigating other screens and shows basic data about number of entities.
+
   countOneTimeInc!: number;
   countOneTimeExp!: number;
   countRegularInc!: number;
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
 
      }
 
+  // this method works every time the page is initialized.
   ngOnInit(): void {
     this.getTotalOneTimeIncome();
     this.getTotalOneTimeExpense();
@@ -35,18 +37,7 @@ export class HomeComponent implements OnInit {
     this.getTotalRegularExpenses();
   }
 
-  dropdownItemClick(e: any) {
-    switch (this.addOptions.indexOf(e.itemData)) {
-      case 0:
-        window.location.replace(`${'../oneTime'}${e.element.textContent}`);
-        break;
-      case 1:
-        window.location.replace(`${'../regular'}${e.element.textContent}`);
-        break;
-      default:
-        break;
-    }
-  }
+  // 4 methods to get number of entities by subscribing the requests of services.
 
   getTotalOneTimeIncome() {
     this.oneTimeIncomeService.GetAll()

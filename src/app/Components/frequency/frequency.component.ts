@@ -10,6 +10,9 @@ import { BaseComponent } from '../base/base.component';
 })
 export class FrequencyComponent extends BaseComponent<Frequency> {
 
+  // class that represents frequency editing screen.
+  // allows adding, updating and removing new frequency option to be picked when a recurring transaction is created.
+
   gridDataSource!: OneTimeExpense[];
   maxId!: number;
 

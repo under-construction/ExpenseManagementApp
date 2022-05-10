@@ -10,6 +10,8 @@ import { BaseComponent } from '../base/base.component';
   styleUrls: ['./regular-income.component.css']
 })
 export class RegularIncomeComponent extends BaseComponent<RegularIncome> {
+  // class that represents regular income screen.
+  // allows user to list and edit regular incomes on a form or a datagrid.  
 
   frequencyOpt!: Frequency[];
   maxId!: number;

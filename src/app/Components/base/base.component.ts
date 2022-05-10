@@ -4,6 +4,11 @@ import { BaseService } from 'src/app/Services/base.service';
 @Directive()
 export class BaseComponent<TModel> {
 
+  // generic base class for components that holds page data.
+  // keeps a generic type formModel and a model list consisting of generic type elements.
+  // subscribes to the generic base service requests and holds response data.
+  // marked as Directive because of the fact that no screen representation is provided for this class
+
   formModel: TModel = {} as TModel;
   modelList: TModel[] = [];
 
