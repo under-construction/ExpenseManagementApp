@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForecastComponent } from './Components/forecast/forecast.component';
 import { FrequencyComponent } from './Components/frequency/frequency.component';
 import { HomeComponent } from './Components/home/home.component';
 import { OneTimeExpenseComponent } from './Components/one-time-expense/one-time-expense.component';
@@ -8,13 +9,14 @@ import { RegularExpenseComponent } from './Components/regular-expense/regular-ex
 import { RegularIncomeComponent } from './Components/regular-income/regular-income.component';
 
 const routes: Routes = [
+  { path: '',  redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'oneTimeIncome', component: OneTimeIncomeComponent },
   { path: 'regularIncome', component: RegularIncomeComponent },
   { path: 'oneTimeExpense', component: OneTimeExpenseComponent },
   { path: 'regularExpense', component: RegularExpenseComponent },
   { path: 'frequency', component: FrequencyComponent },
-  { path: '',  redirectTo: '/home', pathMatch: 'full' }
+  { path: 'forecast', component: ForecastComponent }
 ];
 
 @NgModule({

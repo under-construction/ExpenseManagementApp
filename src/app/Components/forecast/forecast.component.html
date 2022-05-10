@@ -1,0 +1,54 @@
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <h1 class="text-center mb-4">Forecaster</h1>
+
+    <div class="row justify-content-between w-75">
+        <div class="col-4 border m-3">
+            <form class="p-3">
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Select Date:</label>
+                    <div class="col-8">
+                        <dx-date-box [showClearButton]="true" dateSerializationFormat="yyyy-MM-dd" type="date"
+                        [(value)]="selectedDate"></dx-date-box>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Total One Time Income:</label>
+                    <div class="col-8">
+                        <dx-number-box [(value)]="totalOneTimeIncome" [readOnly]="true"></dx-number-box>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Total One Time Expense:</label>
+                    <div class="col-8">
+                        <dx-number-box [(value)]="totalOneTimeExpense" [readOnly]="true"></dx-number-box>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Total Regular Income:</label>
+                    <div class="col-8">
+                        <dx-number-box [(value)]="totalRegularIncome" [readOnly]="true"></dx-number-box>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-4 col-form-label">Total Regular Expense:</label>
+                    <div class="col-8">
+                        <dx-number-box [(value)]="totalRegularExpense" [readOnly]="true"></dx-number-box>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-5">
+                            <dx-button text="Show" class="btn btn-success m-2" 
+                            (onClick)="showAmounts()"></dx-button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
