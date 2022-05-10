@@ -40,15 +40,37 @@
                     </div>
                 </div>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-5">
-                            <dx-button text="Show" class="btn btn-success m-2" 
-                            (onClick)="showAmounts()"></dx-button>
-                        </div>
+                <div class="d-flex flex-column align-items-center">
+                    <div class="col-5">
+                        <dx-button text="Show" class="btn btn-success m-2" 
+                        (onClick)="showAmounts()"></dx-button>
                     </div>
                 </div>
             </form>
+        </div>
+
+        <div class="col-7 border m-3">
+            <div *ngIf="!overallBudget">
+                <p>Click show button to view chart.</p>
+            </div>
+            <div class="row" *ngIf="overallBudget">
+                <div class="col-8">
+                    <dx-pie-chart type="doughnut" [dataSource]="chartDataSource"
+                    palette="Soft Pastel" title="Overall">
+                        <dxi-series argumentField="name" valueField="amount">
+                            <dxo-label [visible]="true" format="currency">
+                            </dxo-label>
+                        </dxi-series>
+                        <dxo-size [width]="500"></dxo-size>
+                    </dx-pie-chart>
+                </div>
+                <div class="col-4 pt-5">
+                    <label class="col-4 col-form-label">Overall:</label>
+                    <div class="col-8">
+                        <dx-number-box [(value)]="overallBudget" [readOnly]="true"></dx-number-box>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

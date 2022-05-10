@@ -19,12 +19,13 @@ export class ForecastComponent implements OnInit {
   totalOneTimeExpense!: number;
   totalRegularIncome!: number;
   totalRegularExpense!: number;
-  totalBudget!: number;
+  overallBudget!: number;
   oneTimeIncomeList!: OneTimeIncome[];
   regularIncomeList!: RegularIncome[];
   oneTimeExpenseList!: OneTimeExpense[];
   regularExpenseList!: RegularExpense[];
   frequencyList!: Frequency[];
+  chartDataSource!: any[];
 
   constructor(
     private oneTimeIncomeService: OneTimeIncomeService,
@@ -47,7 +48,6 @@ export class ForecastComponent implements OnInit {
     .subscribe(
       res => {
         this.oneTimeIncomeList = res;
-        this.totalBudget = res.reduce((sum, i) => sum + i.amount, 0);
       },
       err => console.log(err.messagew)
     );
@@ -90,6 +90,34 @@ export class ForecastComponent implements OnInit {
     this.calculateOneTimeExpenses(this.selectedDate);
     this.forecastRegularIncomes(this.selectedDate);
     this.forecastRegularExpenses(this.selectedDate);
+    this.getChartDataSource();
+    this.calculateOverall();
+  }
+
+  calculateOverall() {
+    this.overallBudget = this.totalOneTimeIncome + this.totalRegularIncome 
+    - (this.totalOneTimeExpense + this.totalRegularExpense);
+  }
+
+  private getChartDataSource() {
+    this.chartDataSource = [
+      {
+        name: 'One Time Income',
+        amount: this.totalOneTimeIncome,
+      },
+      {
+        name: 'One Time Expense',
+        amount: this.totalOneTimeExpense,
+      },
+      {
+        name: 'Regular Income',
+        amount: this.totalRegularIncome,
+      },
+      {
+        name: 'Regular Expense',
+        amount: this.totalRegularExpense,
+      }
+    ];
   }
 
   private forecastRegularIncomes(date: string | number | Date) {
